@@ -45,7 +45,7 @@ public class TiendaOnline {
             System.out.println("El Cliente " + cliente2 + " compro 2 pares de zapatos una camiseta y unos pantalones");
         }
 
-        double precioCobrado = Math.ceil(precioPantalon + precioCamiseta);
+        double precioCobrado = Math.ceil(precioPantalon + precioCamiseta);//redondea
         double nuevoTotal = Math.ceil(precioZapatos + precioLibro);
 
         double diferenciaPrecio = (precioCobrado - nuevoTotal);
