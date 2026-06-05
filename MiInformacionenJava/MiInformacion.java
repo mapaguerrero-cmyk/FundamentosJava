@@ -6,7 +6,7 @@ public class MiInformacion {
         String hobbies = "programar, estudiar, leer y cocinar";
 
         System.out.println("Hola, mi nombre es " + nombre + ".");
-        System.out.println("Tengo " + edad + " años.");
+        System.out.println("Tengo " + edad + " anos.");
         System.out.println("Vivo en " + ciudad + ".");
         System.out.println("Mis hobbies son: " + hobbies + ".");
     }

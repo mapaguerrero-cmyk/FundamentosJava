@@ -12,8 +12,8 @@ public class TiendaOnline {
         double precioLibro = 15.99;
         double precioCamiseta = 25.50;
 
-        double precioPantalon = 25.00; //precio pantalon
-        double precioZapatos = 10.00; //precio zapatos
+        double precioPantalon = 45.00; //precio pantalon
+        double precioZapatos = 50.00; //precio zapatos
     
         // Variables de clientes (agrega las tuyas a continuación)
         String cliente1 = "Ana";
@@ -33,16 +33,18 @@ public class TiendaOnline {
         // ** Aquí irán las declaraciones de impresión relacionadas con la interacción del cliente ** //
 
         if (pedidoConfirmadoCliente1){
-            System.out.println("El Cliente " + cliente1 + " compro un pantalon" );
+            System.out.println("El Cliente " + cliente1 + " " + mensajeConfirmacion);
         }
 
         if (pedidoConfirmacionCliente3) {
-            System.out.println("El Cliente " + cliente3 + " compro zapatos y un libro");
+            System.out.println("El Cliente " + cliente3 + " " + mensajeConfirmacion);
             
         }
 
+        double valorTotalCompra = (precioZapatos * 2) + precioCamiseta + precioPantalon;
+
         if (pedidoConfirmacionCliente2){
-            System.out.println("El Cliente " + cliente2 + " compro 2 pares de zapatos una camiseta y unos pantalones");
+            System.out.println("El Cliente " + cliente2 + " " + mensajeMostrarTotal + valorTotalCompra);
         }
 
         double precioCobrado = Math.ceil(precioPantalon + precioCamiseta);//redondea
@@ -50,7 +52,7 @@ public class TiendaOnline {
 
         double diferenciaPrecio = (precioCobrado - nuevoTotal);
         System.out.println("Para el Cliente " + cliente3 + " su nuevo Total es: "+ nuevoTotal);
-        System.out.println("La diferencia de Precio es: " + diferenciaPrecio);
+        System.out.println("\nLa diferencia de Precio es: " + diferenciaPrecio);
 
 
 
