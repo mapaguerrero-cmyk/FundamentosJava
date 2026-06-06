@@ -26,7 +26,7 @@ public class Aplicacion {
         String esTextoPalindromo = Algoritmos.esPalindromo(textoValidar) ? "Es Palindromo": "No es Palindromo";
         System.out.println("La palabra: " + textoValidar +" "+esTextoPalindromo );
 
-         String textoValidar2 = "Increible";
+        String textoValidar2 = "Increible";
         String esTextoPalindromo2 = Algoritmos.esPalindromo(textoValidar2) ? "Es Palindromo": "No es Palindromo";
         System.out.println("La palabra: " + textoValidar2 +" "+esTextoPalindromo2 );
 
