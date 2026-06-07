@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Garage {
     //Atributos
-    public ArrayList<Vehiculo> vehiculos;
-    public int capacidad;
+    private ArrayList<Vehiculo> vehiculos;
+    private int capacidad;
 
     // Constructor
     public Garage(int capacidad){
@@ -21,7 +21,7 @@ public class Garage {
         if(capacidadEnUso < this.capacidad){
             this.vehiculos.add(auto);
         }else{
-            System.out.println("No hay espacio para recibir el vehiculo: " + auto.marca);
+            System.out.println("No hay espacio para recibir el vehiculo: ");
         }
     }
     
