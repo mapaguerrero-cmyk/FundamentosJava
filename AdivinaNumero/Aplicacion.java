@@ -9,21 +9,20 @@ public class Aplicacion {
         String linea = System.console().readLine();
         int num = Integer.parseInt(linea);
         int numAleatorio = (int)(Math.random() * 100) + 1;
-        ArrayList<Integer> intentos = new ArrayList<Integer>();
+        ArrayList<Integer> intentos = new ArrayList<Integer>();//inicializa arraylist
         String resultado = "";
-        boolean adivina = false;
+        boolean noAdivina = true;
         do {
             intentos.add(num);
             resultado = AdivinaNumero.compararNumeros(num, numAleatorio);
             if(resultado.equals("Has conseguido adivinar el numero.")){
-                adivina = true;
+                noAdivina = false;
             }else{
                 System.out.println(resultado);
                 linea = System.console().readLine();
                 num = Integer.parseInt(linea);
             }
-            
-        }while (!adivina);
+        }while (noAdivina);
         System.out.println(resultado);
         System.out.println("Te tomo " + intentos.size() + " veces adivinar el numero");
         // Recorremos el ArrayList para imprimir los elementos separados por espacios
