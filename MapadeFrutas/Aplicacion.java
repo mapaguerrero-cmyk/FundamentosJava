@@ -16,7 +16,7 @@ public class Aplicacion {
         System.out.println(frutas.get("naranjas"));
 
         //recorrer un mapa de hash se usa la clase set 
-        Set<String> claves = frutas.keySet();
+        Set<String> claves = frutas.keySet();//recuperar todas las claves
         for(String clave:claves){
             System.out.print(clave + " " + frutas.get(clave) + ",");
         }

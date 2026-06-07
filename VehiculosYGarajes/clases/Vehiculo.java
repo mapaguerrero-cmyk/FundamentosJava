@@ -12,9 +12,9 @@ public class Vehiculo {
         this.ano = ano;
     }
     
-    @Override
-    public String toString(){
-        return "Marca: "+ marca + " " + "Modelo: "+ modelo + " " + "Ano: " + ano;
+    //@Override
+    public String despliegaInformacion(){
+        return "Marca: "+ this.marca + " " + "Modelo: "+ this.modelo + " " + "Ano: " + this.ano;
     }
 
 

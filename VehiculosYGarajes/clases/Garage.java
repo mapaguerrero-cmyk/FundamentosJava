@@ -20,19 +20,17 @@ public class Garage {
 
         if(capacidadEnUso < this.capacidad){
             this.vehiculos.add(auto);
-            System.out.println("Vehiculo agregado: " + auto.marca);
         }else{
             System.out.println("No hay espacio para recibir el vehiculo: " + auto.marca);
         }
     }
     
-    @Override
-    public String toString(){
-        return "Garage registra los vehiculos: " + vehiculos;
+    //@Override
+    public void mostrarVehiculos(){
+        for(int i=0; i< this.vehiculos.size(); i++){
+            System.out.println(this.vehiculos.get(i).despliegaInformacion());
+        }
     }
-
-
-    
 }
 
 

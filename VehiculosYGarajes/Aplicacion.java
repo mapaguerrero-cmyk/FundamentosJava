@@ -2,22 +2,23 @@ import clases.Garage;
 import clases.Vehiculo;
 public class Aplicacion {
     public static void main(String[] args){
+            //Crear un garaje con una capacidad definida para dos vehículos.
             int capacidadMaxima = 2;
             Garage garaje1 = new Garage(capacidadMaxima);
-        
+
+            //Crear al menos tres vehículos con diferentes marcas, modelos y años.
             Vehiculo auto1 = new Vehiculo("Citroen", "Zara", 2020);
-            System.out.println(auto1.toString());
             Vehiculo auto2 = new Vehiculo("Omoda", "Electrico", 2024);
-            System.out.println(auto2.toString());
             Vehiculo auto3 = new Vehiculo("Toyota", "Corolla", 2022);
-            System.out.println(auto3.toString());
             
+            //Agregar dos vehículos al garaje y verificar que no se exceda la capacidad.
             garaje1.agregarVehiculo(auto1);
             garaje1.agregarVehiculo(auto2);
-            garaje1.agregarVehiculo(auto3);
+            //Imprimir los vehículos almacenados en el garaje para verificar que se añadieron correctamente.
+            garaje1.mostrarVehiculos();
 
-            System.out.println(garaje1.toString());
-            
+            //Intentar agregar un tercer vehículo cuando el garaje está lleno 
+            garaje1.agregarVehiculo(auto3);
         }
 
     }
