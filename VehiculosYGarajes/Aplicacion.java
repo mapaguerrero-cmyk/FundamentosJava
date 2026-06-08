@@ -15,6 +15,7 @@ public class Aplicacion {
             garaje1.agregarVehiculo(auto1);
             garaje1.agregarVehiculo(auto2);
             //Imprimir los vehículos almacenados en el garaje para verificar que se añadieron correctamente.
+            System.out.println("Garage almacena los siguientes vehiculos: ");
             garaje1.mostrarVehiculos();
 
             //Intentar agregar un tercer vehículo cuando el garaje está lleno 

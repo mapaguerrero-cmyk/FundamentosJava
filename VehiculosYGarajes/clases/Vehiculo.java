@@ -14,7 +14,7 @@ public class Vehiculo {
     
     //@Override
     public String despliegaInformacion(){
-        return "Marca: "+ this.marca + " " + "Modelo: "+ this.modelo + " " + "Ano: " + this.ano;
+        return "Marca: "+ this.marca + " | Modelo: "+ this.modelo + " | Ano: " + this.ano;
     }
 
 
