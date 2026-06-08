@@ -25,7 +25,7 @@ public class Garage {
         }
     }
     
-    //@Override
+    //Metodo de instancia
     public void mostrarVehiculos(){
         for(Vehiculo auto:this.vehiculos){
             System.out.println(auto.despliegaInformacion());

@@ -12,7 +12,7 @@ public class Vehiculo {
         this.ano = ano;
     }
     
-    //@Override
+    //Metodo de instancia
     public String despliegaInformacion(){
         return "Marca: "+ this.marca + " | Modelo: "+ this.modelo + " | Ano: " + this.ano;
     }
