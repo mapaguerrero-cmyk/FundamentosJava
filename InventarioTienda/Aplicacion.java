@@ -37,11 +37,15 @@ public class Aplicacion{
         // Realizar ventas
         System.out.println("\n=== REALIZAR VENTAS ===");
 
-        // Vender 2 televisores Sony
-        tienda.realizarVenta("Sony", 2);
+        // Vender 8 televisores Sony
+        tienda.realizarVenta("Sony", 8);
 
-        // Vender 1 computadora HP
-        tienda.realizarVenta("Core i7", 1);
+        // Vender 5 computadora HP
+        tienda.realizarVenta("Corei7", 5);
+
+        // Vender 10 tv Xiaomi
+        tienda.realizarVenta("Xiaomi", 10);
+
 
         // Intentar vender más de lo que hay (prueba de error)
         System.out.println("\n=== 10 unidades de Sony (prueba de stock insuficiente) ===");
