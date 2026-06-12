@@ -57,17 +57,18 @@ public class CuentaBancaria {
     public void depositar(double monto){
         if (monto > 0) {
         this.saldo += monto;
+        System.out.println("Deposito de: $" + monto + " realizado con exito");
         } else {
         System.out.println("Error: El monto a depositar debe ser positivo.");
         }
-        this.saldo +=monto;
     }
     // Retira el monto especificado del saldo de la cuenta, 
     // si hay suficientes fondos.
     public void retirar(double monto){
         double saldoDisponible = this.getSaldo();
-        if(saldoDisponible >= monto){
+        if(saldoDisponible > 0 && saldoDisponible >= monto){
             this.saldo -=monto;
+            System.out.println("Retiro de: $" + monto + " realizado con exito");
         }
         else{
             System.out.println("<Saldo insuficiente> $" + this.saldo +" No puede retirar monto: $" + monto);
@@ -76,11 +77,16 @@ public class CuentaBancaria {
 
     //Muestra la información de la cuenta incluyendo la información del titular.
     public void despliegaInformacion(){
-        System.out.println("Titular: " + this.titular + " | Nro de cuenta: " + this.numeroCuenta + " | Saldo: $" + this.saldo);
+        System.out.println("\n----------------Datos de la cuenta -----------");
+        System.out.println("Titular de la cuenta: "+ this.titular.getNombre());
+        System.out.println("Numero de cuenta: "+ this.numeroCuenta);
+        System.out.println("Saldo de la cuenta: " + this.saldo);
+        System.out.println("-----------------------------------------------");
     }
 
     //Método estático que recorre la lista de cuentas bancarias e imprime su información.
     public static void imprimeInformacionDeTodasLasCuentas(){
+        System.out.println("\n---------Informacion de todas las cuentas bancarias--------");
         for(CuentaBancaria cuenta:listaDeCuentasBancarias){
             cuenta.despliegaInformacion();
 
