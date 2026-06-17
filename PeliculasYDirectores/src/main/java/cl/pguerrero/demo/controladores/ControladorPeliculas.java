@@ -26,7 +26,7 @@ public class ControladorPeliculas {
 	//http://localhost:8080/peliculas
 	@GetMapping("/peliculas")
 	public String obtenerTodasLasPeliculas() {
-		String resultado = "Lista de películas disponibles:<br>";
+		String resultado = "<< Lista de películas disponibles:<br>";
 		for (String pelicula : listaPeliculas.keySet()) {
 			resultado += pelicula + "<br>";
 		}
@@ -39,7 +39,7 @@ public class ControladorPeliculas {
 		
 		for (String pelicula : listaPeliculas.keySet()){
 			if (pelicula.equalsIgnoreCase(nombre)) {
-				return "La pelicula : " + pelicula + " y su director es: " + listaPeliculas.get(pelicula);
+				return "<< La pelicula : " + pelicula + " y su director es: " + listaPeliculas.get(pelicula);
 			}
 		}
 		return " «La película no se encuentra en nuestra lista.»";
@@ -56,9 +56,9 @@ public class ControladorPeliculas {
 			}
 		}
 		if (resultado.isEmpty()) {
-			return "No contamos con películas con ese director en nuestra lista.";
+			return "<< No contamos con películas con ese director en nuestra lista.>>";
 		}else {
-			return "Peliculas del director: " + nombre + "<br>" + resultado;
+			return "<< Peliculas del director: " + nombre + "<br>" + resultado;
 		}
 		
 		
