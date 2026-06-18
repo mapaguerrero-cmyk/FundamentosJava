@@ -1,10 +1,5 @@
 @charset "ISO-8859-1";
 
-/* ============================================
-   ESTILOS PARA EXPLORADOR DE RECETAS
-   (Basado en el diseño de clases)
-   ============================================ */
-
 /* ----- Fondo y fuente general ----- */
 body {
     background-color: #151515;
@@ -96,7 +91,6 @@ a:hover {
     color: #151515;
 }
 
-/* ----- Mensaje de error (rojo) ----- */
 .error {
     color: #e8c06e;              
     background-color: #1e1e1e;   
