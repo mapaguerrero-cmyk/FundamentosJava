@@ -1,4 +1,5 @@
 package cl.pguerrero.demo.controladores;
+import java.text.Normalizer;
 import java.util.HashMap;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,21 +22,15 @@ public class ControladorPeliculas {
 		listaPeliculas.put("Big Hero 6", "Don Hall");	
 	}
 	
-	// Metodo para normalizar (elimina acentos y mayusculas)
-	private String normalizar(String texto) {
-        if (texto == null) return "";
-        return texto
-            .toLowerCase()
-            .replace("á", "a")
-            .replace("é", "e")
-            .replace("í", "i")
-            .replace("ó", "o")
-            .replace("ú", "u")
-            .replace("ü", "u")
-            .replace("ñ", "n");
+	// Metodo para normalizar con ReGex (Expresiones Regulares)
+	private String normalizarRegEx(String texto) {
+		String normalizado = Normalizer.normalize(texto, Normalizer.Form.NFD);
+		return normalizado.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "").toLowerCase();
+        
     }
 		
-	//http://localhost:8080/peliculas
+	// http://localhost:8080/peliculas
+	// 1. lista de todas las películas disponibles
 	@GetMapping("")
 	public String obtenerTodasLasPeliculas() {
 		String resultado = "<< Lista de películas disponibles:<br>";
@@ -45,13 +40,14 @@ public class ControladorPeliculas {
 		return resultado;
 	}
 	
-	//http://localhost:8080/peliculas/oliver
+	// http://localhost:8080/peliculas/oliver
+	// 2. Devuelve el nombre de la película y su director
 	@GetMapping("/{nombre}")
 	public String obtenerPeliculaPorNombre(@PathVariable("nombre") String nombre) {
-		String nombreNormalizado = normalizar(nombre);
+		String nombreNormalizado = normalizarRegEx(nombre);
 		
 		for (String pelicula : listaPeliculas.keySet()){
-			String peliculaNormalizada = normalizar(pelicula);
+			String peliculaNormalizada = normalizarRegEx(pelicula);
 			if (peliculaNormalizada.equals(nombreNormalizado)) {
 				return "<< La pelicula : " + pelicula + " y su director es: " + listaPeliculas.get(pelicula);
 			}
@@ -59,29 +55,25 @@ public class ControladorPeliculas {
 		return " «La película no se encuentra en nuestra lista.»";
 	}
 	
-	//http://localhost:8080/peliculas/director/don%20hall
+	// http://localhost:8080/peliculas/director/don%20hall
+	// 3. lista de todas las películas que tienen ese director
 	@GetMapping("/director/{nombre}")
 	public String obtenerPeliculasPorDirector(@PathVariable("nombre") String nombre) {
-		String nombreNormalizado = normalizar(nombre);
+		String nombreNormalizado = normalizarRegEx(nombre);
 		String directorOriginal = "";
 		String resultado ="";
 		
 		for (String pelicula : listaPeliculas.keySet()) {
 			String director = listaPeliculas.get(pelicula);
-			String directorNormalizado = normalizar(director);
+			String directorNormalizado = normalizarRegEx(director);
 			
 			if (directorNormalizado.equals(nombreNormalizado)) {
 				directorOriginal = listaPeliculas.get(pelicula);
 				resultado += pelicula + "<br>";// Agrega la película y un salto de línea
 			}
 		}
-		if (resultado.isEmpty()) {
-			return "<< No contamos con películas con ese director en nuestra lista.>>";
-		}else {
-			return "<< Peliculas del director: " + directorOriginal + "<br>" + resultado;
+		return resultado.isEmpty() ? "<< No contamos con películas con ese director en nuestra lista.>>" : "<< Peliculas del director: " + directorOriginal + "<br>" + resultado;
 		}
-		
-		
-	}
-	
 }
+	
+
