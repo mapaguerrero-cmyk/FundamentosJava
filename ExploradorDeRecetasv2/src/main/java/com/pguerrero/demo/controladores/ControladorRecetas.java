@@ -1,7 +1,7 @@
 package com.pguerrero.demo.controladores;
 
 import java.util.HashMap;
-
+import java.text.Normalizer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,19 +24,11 @@ public class ControladorRecetas {
 		recetasConIngredientes.put("Lasaña", lasaña);
 	}
 	
-	// Metodo para normalizar (elimina acentos y mayusculas)
-			private String normalizar(String texto) {
-		        if (texto == null) return "";
-		        return texto
-		            .toLowerCase()
-		            .replace("á", "a")
-		            .replace("é", "e")
-		            .replace("í", "i")
-		            .replace("ó", "o")
-		            .replace("ú", "u")
-		            .replace("ü", "u")
-		            .replace("ñ", "n");
-		    }
+	// Metodo para normalizar con ReGex (Expresiones Regulares)
+		private String normalizarRegEx(String texto) {
+			String normalizado = Normalizer.normalize(texto, Normalizer.Form.NFD);
+			return normalizado.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "").toLowerCase();
+		}	
 	
 	@GetMapping("")
 	public String obtenerTodasLasRecetas(Model modelo) {
@@ -47,11 +39,11 @@ public class ControladorRecetas {
 	
 	@GetMapping("/{nombre}")
 	public String obtenerRecetaPorNombre(@PathVariable("nombre") String nombre, Model modelo) {
-		String nombreNormalizado = normalizar(nombre);
+		String nombreNormalizado = normalizarRegEx(nombre);
 		
 		for (int i=0; i < listaRecetas.length; i++ ) {
 			String recetaOriginal = listaRecetas[i];
-			String recetaNormalizada = normalizar(listaRecetas[i]);
+			String recetaNormalizada = normalizarRegEx(listaRecetas[i]);
 			if (nombreNormalizado.equals(recetaNormalizada)) {
 				String[] ingredientes = recetasConIngredientes.get(recetaOriginal);
 				modelo.addAttribute("receta", recetaOriginal);
