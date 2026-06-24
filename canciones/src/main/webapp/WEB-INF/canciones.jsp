@@ -34,7 +34,7 @@
                 </c:forEach>
             </tbody>
         </table>
-        
+        <a href="/canciones/formulario/agregar" class="btn-agregar">Agregar Canción</a>
     </div>
 </body>
 </html>

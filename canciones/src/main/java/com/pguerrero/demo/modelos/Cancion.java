@@ -2,7 +2,7 @@ package com.pguerrero.demo.modelos;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,8 +12,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "canciones")
@@ -23,29 +24,33 @@ public class Cancion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable=false)
+	@NotNull(message = "Este campo es obligatorio.")
+	@Size(min = 5, max = 60, message = "Debe contener entre 5 y 60 caracteres.")
 	private String titulo;
 	
-	@Column(nullable=false)
+	@NotNull(message = "Este campo es obligatorio.")
+	@Size(min = 3, max = 40, message = "Debe contener entre 3 y 40 caracteres.")
 	private String artista;
 	
-	@Column(nullable=false)
+	@NotNull(message = "Este campo es obligatorio.")
+	@Size(min = 3, max = 20, message = "Debe contener entre 3 y 20 caracteres.")
 	private String album;
 	
-	@Column(nullable=false)
+	@NotNull(message = "Este campo es obligatorio.")
+	@Size(min = 3, message = "Debe contener al menos 3 caracteres.")
 	private String genero;
 	
-	@Column(nullable=false)
+	@NotNull(message = "Este campo es obligatorio.")
+	@Size(min = 3, max = 15, message = "Debe contener entre 3 y 15 caracteres.")
 	private String idioma;
 	
-	@Column(updatable=false, name="fecha_creacion")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@CreationTimestamp
+	@Column(name = "fecha_creacion", updatable = false)
 	private Date fechaCreacion;
 	
+	
+	@CreationTimestamp
 	@Column(name="fecha_actualizacion")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fechaActualizacion;
 	
 	@PrePersist

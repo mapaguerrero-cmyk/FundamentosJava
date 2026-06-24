@@ -22,10 +22,14 @@ public class ServicioCanciones {
 	
 	//OPERACIONES LECTURA --> SELECT
 	public List<Cancion> obtenerTodasLasCanciones(){
-		return (List<Cancion>) this.repositorioCanciones.findAll();
+		return  this.repositorioCanciones.findAll();
 	}
 	
 	public Cancion obtenerCancionPorId(Long id) {
 		return this.repositorioCanciones.findById(id).orElse(null);
+	}
+	
+	public Cancion agregarCancion(Cancion cancion) {
+		return this.repositorioCanciones.save(cancion);
 	}
 }
