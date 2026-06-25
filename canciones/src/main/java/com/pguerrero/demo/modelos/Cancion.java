@@ -64,6 +64,11 @@ public class Cancion {
 		this.fechaActualizacion = new Date();
 	}
 	
+		
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Cancion() {
 		}
 
