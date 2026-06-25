@@ -44,12 +44,10 @@ public class Cancion {
 	@Size(min = 3, max = 15, message = "Debe contener entre 3 y 15 caracteres.")
 	private String idioma;
 	
-	@CreationTimestamp
 	@Column(name = "fecha_creacion", updatable = false)
 	private Date fechaCreacion;
 	
 	
-	@CreationTimestamp
 	@Column(name="fecha_actualizacion")
 	private Date fechaActualizacion;
 	
@@ -72,6 +70,7 @@ public class Cancion {
 	public Cancion() {
 		}
 
+		
 	public String getTitulo() {
 		return titulo;
 	}

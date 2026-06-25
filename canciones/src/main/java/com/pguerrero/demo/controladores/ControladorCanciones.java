@@ -70,14 +70,16 @@ public class ControladorCanciones {
 		return "editarCancion.jsp";
 	}
 	
-	@PutMapping("/canciones/procesa/editar")
-	public String procesarEditarCancion(@Valid @ModelAttribute("cancion") Cancion cancion, BindingResult validaciones) {
+	@PutMapping("/canciones/procesa/editar/{idCancion}")
+	public String procesarEditarCancion(@Valid @ModelAttribute("cancion") Cancion cancion, BindingResult validaciones, @PathVariable("idCancion") Long idCancion) {
 		
+		cancion.setId(idCancion);
 		System.out.println("ID de la canción PUT: " + cancion.getId());
 	    System.out.println("Título: " + cancion.getTitulo());
 		if (validaciones.hasErrors()) {
 			return "editarCancion.jsp";
 		}
+		
 		System.out.println("Actualizando canción...");
 		this.servicioCanciones.actualizaCancion(cancion);
 		return "redirect:/canciones";
