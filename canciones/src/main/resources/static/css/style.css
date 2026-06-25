@@ -163,6 +163,28 @@ input[type="submit"]:hover {
     gap: 15px;
     margin-top: 20px;
 }
+
+.btn-actualizar, .btn-eliminar {
+    display: inline-block;
+    background-color: #3b3b3b;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-right: 8px; /* Espacio entre botones */
+    width: auto;
+}
+
+.btn-actualizar:hover, .btn-eliminar:hover {
+    background-color: #fdca52;
+    color: #151515;
+}
+
 /* ==========================================
    ESTILOS PARA TABLA DE CANCIONES
    ========================================== */

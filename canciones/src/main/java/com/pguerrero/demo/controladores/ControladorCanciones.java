@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,11 +63,7 @@ public class ControladorCanciones {
 	@GetMapping("/canciones/formulario/editar/{idCancion}")
 	public String formularioEditarCancion(@PathVariable("idCancion") Long id, Model modelo ) {
 		
-		System.out.println("ID recibido en GET: " + id);
-				
 		modelo.addAttribute("cancion", this.servicioCanciones.obtenerCancionPorId(id));
-		
-		System.out.println("idCancion agregado al modelo: " + id);
 		return "editarCancion.jsp";
 	}
 	
@@ -74,15 +71,19 @@ public class ControladorCanciones {
 	public String procesarEditarCancion(@Valid @ModelAttribute("cancion") Cancion cancion, BindingResult validaciones, @PathVariable("idCancion") Long idCancion) {
 		
 		cancion.setId(idCancion);
-		System.out.println("ID de la canción PUT: " + cancion.getId());
-	    System.out.println("Título: " + cancion.getTitulo());
 		if (validaciones.hasErrors()) {
 			return "editarCancion.jsp";
 		}
 		
-		System.out.println("Actualizando canción...");
 		this.servicioCanciones.actualizaCancion(cancion);
 		return "redirect:/canciones";
 	}
+	
+	@DeleteMapping("/canciones/eliminar/{idCancion}")
+	public String eliminarCancion( @PathVariable("idCancion") Long idCancion) {
+		this.servicioCanciones.eliminarCancion(idCancion);
+		return "redirect:/canciones";
+	}
+	
 	
 }

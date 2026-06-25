@@ -16,11 +16,6 @@
 		<form:form action="/canciones/procesa/editar/${cancion.id}" method="POST" modelAttribute="cancion">
 			<input type="hidden" name="_method" value="PUT" />
 			
-			<%-- 
-			<input type="hidden" value="${cancion.id}" name="id" />
-        	<input type="hidden" value="${cancion.fechaCreacion}" name="fechaCreacion" />
-        	<input type="hidden" value="${cancion.fechaActualizacion}" name="fechaActualizacion" />
-			--%>
 			<form:label path="titulo">Título:</form:label>
 			<form:input type="text" path="titulo" />
 			<form:errors path="titulo"/>
